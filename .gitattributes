@@ -1,0 +1,37 @@
+# Set default behavior, in case users don't have core.autocrlf set.
+* text=auto
+
+# Explicitly declare text files you want to always normalize and convert to LF
+*.gd text
+*.tscn text
+*.tres text
+*.import text
+*.cfg text
+*.godot text
+*.md text
+*.txt text
+*.json text
+*.xml text
+*.glsl text
+*.shader text
+*.editorconfig text
+.gitattributes text
+.gitignore text
+
+# Declare files that will always have CRLF line endings on checkout.
+# *.bat text eol=crlf
+# *.cmd text eol=crlf
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary # While SVG is text, treating it as binary avoids line ending issues with it.
+*.pck binary
+*.exe binary
+*.dll binary
+*.wav binary
+*.ogg binary
+*.mp3 binary
+# Add other binary file types as needed

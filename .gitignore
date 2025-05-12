@@ -1,0 +1,45 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Godot specific ignores
+*.translation # Imported translation files
+
+# Mono-specific ignores (if you're using C#)
+.mono/
+MonoDevelop*.*
+*.pidb
+*.suo
+*.userprefs
+*.usertasks
+*.sln.metaproj
+*.csproj.metaproj
+*.unityproj
+bin/
+obj/
+Properties/
+
+# General ignores
+*.bak # Backup files
+*.TMP # Temporary files
+*~ # Common temporary file suffix
+
+# Exported game binaries and packages - adjust as needed
+builds/
+export/
+*.exe
+*.pck
+*.zip
+*.apk
+*.aab
+*.dmg
+*.app/
+
+# IDE / Editor specific metadata
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS-specific files
+.DS_Store
+Thumbs.db
