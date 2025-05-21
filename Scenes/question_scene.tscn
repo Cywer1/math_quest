@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm15e7xhv6axi"]
+
+[ext_resource type="Script" uid="uid://7bol0slmlby2" path="res://Scripts/question_scene.gd" id="1_e6obf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p8mks"]
+font_size = 89
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Question_Scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e6obf")
+
+[node name="Question_Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 451.0
+offset_top = 37.0
+offset_right = 754.0
+offset_bottom = 160.0
+text = "2+2=?"
+label_settings = SubResource("LabelSettings_p8mks")
+
+[node name="Answer_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 357.0
+offset_right = 479.0
+offset_bottom = 440.0
+theme_override_font_sizes/font_size = 50
+text = "Answer 1"
+
+[node name="Answer_Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 747.0
+offset_top = 356.0
+offset_right = 977.0
+offset_bottom = 439.0
+theme_override_font_sizes/font_size = 50
+text = "Answer 2"
+
+[node name="Answer_Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 255.0
+offset_top = 533.0
+offset_right = 485.0
+offset_bottom = 616.0
+theme_override_font_sizes/font_size = 50
+text = "Answer 3"
+
+[node name="Answer_Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 739.0
+offset_top = 532.0
+offset_right = 969.0
+offset_bottom = 615.0
+theme_override_font_sizes/font_size = 50
+text = "Answer 4"
+
+[node name="After_Answer_Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="Answer_Button" to="." method="_on_answer_button_pressed"]
+[connection signal="pressed" from="Answer_Button2" to="." method="_on_answer_button_2_pressed"]
+[connection signal="pressed" from="Answer_Button3" to="." method="_on_answer_button_3_pressed"]
+[connection signal="pressed" from="Answer_Button4" to="." method="_on_answer_button_4_pressed"]

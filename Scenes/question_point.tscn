@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://gew5xrva6i2d"]
+
+[ext_resource type="Script" uid="uid://c4010rpmrsoyu" path="res://Scripts/question_point.gd" id="1_1e85m"]
+[ext_resource type="StyleBox" uid="uid://cghq5uu1xyxtd" path="res://question_point.tres" id="3_by3a7"]
+
+[node name="question_point" type="Button"]
+offset_right = 151.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(73, 76)
+theme_override_styles/hover = ExtResource("3_by3a7")
+theme_override_styles/pressed = ExtResource("3_by3a7")
+theme_override_styles/normal = ExtResource("3_by3a7")
+script = ExtResource("1_1e85m")
