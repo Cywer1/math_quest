@@ -1,8 +1,8 @@
 extends Control
 
-var cutscene_scene : String = "res://Scenes/cutscene.tscn" 
-var main_scene : String = "res://Scenes/main_map.tscn"  
-   
+signal question_answered_win
+signal question_answered_lose
+
 var Question_data = {"question":"What is 2 + 2 ?","answers":["1","3","4","5"],"correctAnswer":"4"}
 @onready var answer_button_2: Button = $Answer_Button2
 @onready var answer_button_3: Button = $Answer_Button3
@@ -54,22 +54,28 @@ func _on_answer_button_4_pressed() -> void:
 	else : 
 		handle_lose()
 
-func handle_win():
+func handle_win(): # Make async to use await
 	print("QuestionScene: You won")
 	disable_buttons()
 	after_answer_timer.start()
-	await after_answer_timer.timeout
+	await after_answer_timer.timeout # Timer still useful for local feedback
 	PlayerData.next_character_animation = "victory"
-	get_tree().change_scene_to_file(cutscene_scene)
+	emit_signal("question_answered_win")
 
-func handle_lose():
+func handle_lose(): # Make async to use await
 	print("QuestionScene: You Lost")
 	disable_buttons()
-	PlayerData.decrease_health()
 	after_answer_timer.start()
-	await after_answer_timer.timeout
+	PlayerData.decrease_health() # This should happen BEFORE setting animation
+	
 	if PlayerData.get_current_health() <= 0:
 		PlayerData.next_character_animation = "game_lose"
 	else:
 		PlayerData.next_character_animation = "hearth_lose"
-	get_tree().change_scene_to_file(cutscene_scene)
+	
+	await after_answer_timer.timeout # Timer still useful for local feedback
+	emit_signal("question_answered_lose")
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+			print("Question_scene: I am being freed now!")

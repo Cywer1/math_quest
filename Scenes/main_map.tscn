@@ -1,22 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://c46q0xlouqv3j"]
+[gd_scene load_steps=8 format=3 uid="uid://c46q0xlouqv3j"]
 
 [ext_resource type="Texture2D" uid="uid://db716w1fcnctu" path="res://assets/heart_icon.png" id="1_1vevx"]
 [ext_resource type="Script" uid="uid://c5wnfaw352mru" path="res://Scripts/main_map.gd" id="1_tvgjd"]
 [ext_resource type="PackedScene" uid="uid://4pojeon32r4" path="res://Scenes/game_over.tscn" id="2_f4xrl"]
 [ext_resource type="Texture2D" uid="uid://hj6fbg4qkkdb" path="res://assets/player_icon.png" id="2_tvgjd"]
 [ext_resource type="PackedScene" uid="uid://gew5xrva6i2d" path="res://Scenes/question_point.tscn" id="3_1vevx"]
+[ext_resource type="PackedScene" uid="uid://doltx4d2c6t0h" path="res://Scenes/cutscene.tscn" id="4_o0jjj"]
 [ext_resource type="PackedScene" uid="uid://cm15e7xhv6axi" path="res://Scenes/question_scene.tscn" id="5_nfd1w"]
 
 [node name="MainMap" type="Node"]
 script = ExtResource("1_tvgjd")
 game_over_scene = ExtResource("2_f4xrl")
+question_scene_default_resource = ExtResource("5_nfd1w")
+cutscene_scene_resource = ExtResource("4_o0jjj")
 
-[node name="PlayerIcon" type="Sprite2D" parent="."]
+[node name="MapContent" type="Node2D" parent="."]
+
+[node name="PlayerIcon" type="Sprite2D" parent="MapContent"]
 position = Vector2(151, 373)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_tvgjd")
 
-[node name="question_point" parent="." instance=ExtResource("3_1vevx")]
+[node name="question_point" parent="MapContent" instance=ExtResource("3_1vevx")]
 offset_left = 390.0
 offset_top = 437.0
 offset_right = 481.0
@@ -25,7 +30,7 @@ grow_horizontal = 1
 grow_vertical = 1
 question_scene_resource = ExtResource("5_nfd1w")
 
-[node name="question_point2" parent="." instance=ExtResource("3_1vevx")]
+[node name="question_point2" parent="MapContent" instance=ExtResource("3_1vevx")]
 offset_left = 564.0
 offset_top = 322.0
 offset_right = 655.0
@@ -34,7 +39,7 @@ grow_horizontal = 1
 grow_vertical = 1
 question_scene_resource = ExtResource("5_nfd1w")
 
-[node name="question_point3" parent="." instance=ExtResource("3_1vevx")]
+[node name="question_point3" parent="MapContent" instance=ExtResource("3_1vevx")]
 offset_left = 726.0
 offset_top = 484.0
 offset_right = 817.0
@@ -43,7 +48,7 @@ grow_horizontal = 1
 grow_vertical = 1
 question_scene_resource = ExtResource("5_nfd1w")
 
-[node name="question_point4" parent="." instance=ExtResource("3_1vevx")]
+[node name="question_point4" parent="MapContent" instance=ExtResource("3_1vevx")]
 offset_left = 891.0
 offset_top = 332.0
 offset_right = 982.0
@@ -52,23 +57,23 @@ grow_horizontal = 1
 grow_vertical = 1
 question_scene_resource = ExtResource("5_nfd1w")
 
-[node name="HealthContainer" type="HBoxContainer" parent="."]
+[node name="HealthContainer" type="HBoxContainer" parent="MapContent"]
 offset_left = 936.0
 offset_top = 76.0
-offset_right = 1237.0
-offset_bottom = 144.0
+offset_right = 1219.0
+offset_bottom = 160.0
 
-[node name="HeartIcon" type="Sprite2D" parent="HealthContainer"]
+[node name="HeartIcon" type="Sprite2D" parent="MapContent/HealthContainer"]
 position = Vector2(46, 47)
 texture = ExtResource("1_1vevx")
 
-[node name="HeartIcon2" type="Sprite2D" parent="HealthContainer"]
+[node name="HeartIcon2" type="Sprite2D" parent="MapContent/HealthContainer"]
 position = Vector2(137, 47)
 texture = ExtResource("1_1vevx")
 
-[node name="HeartIcon3" type="Sprite2D" parent="HealthContainer"]
+[node name="HeartIcon3" type="Sprite2D" parent="MapContent/HealthContainer"]
 position = Vector2(223, 45)
 texture = ExtResource("1_1vevx")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="MapContent"]
 position = Vector2(154, 376)
