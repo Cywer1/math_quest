@@ -5,6 +5,8 @@ var current_health = MAX_HEALTH
 signal health_changed(new_health)
 signal no_health_left
 
+var is_first_map_load:bool = true
+
 var next_character_animation: String = ""
 
 func _ready() :

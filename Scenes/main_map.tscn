@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c46q0xlouqv3j"]
+[gd_scene load_steps=9 format=3 uid="uid://c46q0xlouqv3j"]
 
 [ext_resource type="Texture2D" uid="uid://db716w1fcnctu" path="res://assets/heart_icon.png" id="1_1vevx"]
 [ext_resource type="Script" uid="uid://c5wnfaw352mru" path="res://Scripts/main_map.gd" id="1_tvgjd"]
@@ -7,12 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://gew5xrva6i2d" path="res://Scenes/question_point.tscn" id="3_1vevx"]
 [ext_resource type="PackedScene" uid="uid://doltx4d2c6t0h" path="res://Scenes/cutscene.tscn" id="4_o0jjj"]
 [ext_resource type="PackedScene" uid="uid://cm15e7xhv6axi" path="res://Scenes/question_scene.tscn" id="5_nfd1w"]
+[ext_resource type="PackedScene" uid="uid://buspk3fdwhnus" path="res://Scenes/final_win_scene.tscn" id="5_uxcei"]
 
 [node name="MainMap" type="Node"]
 script = ExtResource("1_tvgjd")
 game_over_scene = ExtResource("2_f4xrl")
 question_scene_default_resource = ExtResource("5_nfd1w")
 cutscene_scene_resource = ExtResource("4_o0jjj")
+final_win_scene = ExtResource("5_uxcei")
 
 [node name="MapContent" type="Node2D" parent="."]
 

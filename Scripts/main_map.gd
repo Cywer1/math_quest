@@ -3,12 +3,15 @@ extends Node
 @export var game_over_scene: PackedScene
 @export var question_scene_default_resource : PackedScene
 @export var cutscene_scene_resource : PackedScene
+@export var final_win_scene: PackedScene
+
 
 @onready var health_container: HBoxContainer = $MapContent/HealthContainer
 @onready var player_icon: Sprite2D = $MapContent/PlayerIcon
 @onready var marker_2d: Marker2D = $MapContent/Marker2D
 @onready var map_content_root: Node2D = $MapContent
 
+var all_question_points_initial_nodes: Array[Node] = []
 var active_question_points: Array[Node] = []
 var is_player_moving:bool = false
 const PLAYER_MOVE_SPEED:float = 200
@@ -26,8 +29,14 @@ func _ready() -> void:
 	for child in map_content_root.get_children():
 		if child.has_signal("point_activated"):
 			child.point_activated.connect(_on_question_point_activated)
+			all_question_points_initial_nodes.append(child)
 			active_question_points.append(child)
 			print("Connected to question point: ", child.name)
+	
+	if PlayerData.is_first_map_load:
+		set_player_initial_position(marker_2d.global_position)
+		PlayerData.is_first_map_load = false
+	
 
 func set_player_initial_position(pos:Vector2)->void:
 	if player_icon:
@@ -139,7 +148,21 @@ func _show_cutscene() -> void:
 func _on_cutscene_finished() -> void:
 	print("MainMap: Received cutscene_finished.")
 	_remove_current_sub_scene()
-	_return_to_map_interaction()
+	if active_question_points.is_empty() and PlayerData.get_current_health() >0: 
+		_go_to_final_win_scene()
+	else:
+		_return_to_map_interaction()
+
+func _go_to_final_win_scene()->void:
+	print("MainMap: All questions answered! Proceeding to final win scene.")
+	if final_win_scene:
+		if current_sub_scene:
+			_remove_current_sub_scene()
+		get_tree().change_scene_to_packed(final_win_scene) 
+	else:
+		printerr("MainMap: Final Win Scene not set!")
+		_return_to_map_interaction() 
+	
 
 func _on_cutscene_quit_game() -> void:
 	print("MainMap: Received cutscene_quit_game.")
@@ -174,8 +197,7 @@ func _remove_current_sub_scene() -> void:
 		if current_sub_scene != null: # If it's not null but invalid, set to null
 			current_sub_scene = null
 
-func _return_to_map_interaction() -> void:
-	set_player_initial_position(marker_2d.global_position) # Optionally reset player position
+func _return_to_map_interaction() -> void: # Optionally reset player position
 	_set_main_map_interactive(true)
 	print("MainMap: Returned to map interaction.")
 
@@ -201,7 +223,7 @@ func _set_question_points_interactive(is_interactive: bool, exclude_node: Node =
 			qp_node.disabled = not is_interactive
 		elif qp_node is Control: # General control nodes
 			qp_node.mouse_filter = Control.MOUSE_FILTER_STOP if not is_interactive else Control.MOUSE_FILTER_PASS
-		# Add more specific logic if needed
+		
 
 func _cleanup_after_failed_interaction(point_node: Node):
 	is_player_moving = false
