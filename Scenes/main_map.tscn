@@ -31,33 +31,53 @@ offset_bottom = 528.0
 grow_horizontal = 1
 grow_vertical = 1
 question_scene_resource = ExtResource("5_nfd1w")
+specific_question_data = {
+"answers": ["1", "3", "4", "5"],
+"correctAnswer": "4",
+"question": "What is 2 + 2"
+}
 
 [node name="question_point2" parent="MapContent" instance=ExtResource("3_1vevx")]
-offset_left = 564.0
-offset_top = 322.0
-offset_right = 655.0
-offset_bottom = 413.0
+offset_left = 551.0
+offset_top = 271.0
+offset_right = 642.0
+offset_bottom = 362.0
 grow_horizontal = 1
 grow_vertical = 1
 question_scene_resource = ExtResource("5_nfd1w")
+specific_question_data = {
+"answers": ["1", "3", "4", "5"],
+"correctAnswer": "5",
+"question": "What is 2 + 3"
+}
 
 [node name="question_point3" parent="MapContent" instance=ExtResource("3_1vevx")]
-offset_left = 726.0
-offset_top = 484.0
-offset_right = 817.0
-offset_bottom = 575.0
+offset_left = 718.0
+offset_top = 445.0
+offset_right = 809.0
+offset_bottom = 536.0
 grow_horizontal = 1
 grow_vertical = 1
 question_scene_resource = ExtResource("5_nfd1w")
+specific_question_data = {
+"answers": ["1", "3", "7", "2"],
+"correctAnswer": "3",
+"question": "What is 10 - 7 ?"
+}
 
 [node name="question_point4" parent="MapContent" instance=ExtResource("3_1vevx")]
-offset_left = 891.0
-offset_top = 332.0
-offset_right = 982.0
-offset_bottom = 423.0
+offset_left = 914.0
+offset_top = 295.0
+offset_right = 1005.0
+offset_bottom = 386.0
 grow_horizontal = 1
 grow_vertical = 1
 question_scene_resource = ExtResource("5_nfd1w")
+specific_question_data = {
+"answers": ["10", "11", "8", "5"],
+"correctAnswer": "10",
+"question": "What is 12 - 2 ?"
+}
 
 [node name="HealthContainer" type="HBoxContainer" parent="MapContent"]
 offset_left = 936.0

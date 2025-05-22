@@ -20,6 +20,7 @@ var current_sub_scene:Node = null
 
 var pending_question_scene_resource: PackedScene
 
+var data_for_current_question: Dictionary
 
 func _ready() -> void:
 	PlayerData.health_changed.connect(on_player_health_changed)
@@ -60,7 +61,7 @@ func on_player_no_health()->void:
 		printerr("MainMap: GameOverScene not set!")
 		get_tree().quit()
 
-func _on_question_point_activated(point_node: Node,question_scene_to_load:PackedScene):
+func _on_question_point_activated(point_node: Node,data_from_clicked_point: Dictionary):
 	if is_player_moving or current_sub_scene != null: # Also don't interact if a sub-scene is up
 		print("MainMap: Action blocked (moving or sub-scene active).")
 		if point_node is Button:
@@ -69,11 +70,12 @@ func _on_question_point_activated(point_node: Node,question_scene_to_load:Packed
 	
 	print("MainMap: Question point activated: ", point_node.name)
 	is_player_moving = true
-	pending_question_scene_resource = question_scene_to_load # Store which question scene to load
-	# Disable other question points
+	
+	
+	data_for_current_question = data_from_clicked_point
 	_set_question_points_interactive(false, point_node)
 	
-	var target_position: Vector2
+	var target_position: Vector2 = Vector2.ZERO
 	if point_node is Node2D:
 		target_position = point_node.global_position
 	elif point_node is Control: # Buttons are Controls
@@ -93,29 +95,37 @@ func _on_question_point_activated(point_node: Node,question_scene_to_load:Packed
 	# Destroy the question point (THIS WILL NOW PERSIST)
 	if point_node in active_question_points:
 		active_question_points.erase(point_node)
-	point_node.queue_free()
+	if is_instance_valid(point_node):
+		point_node.queue_free()
 	
 	is_player_moving = false
 	
 	# Now show the question scene
-	_show_question_scene(pending_question_scene_resource)
+	_instantiate_and_show_question_scene(data_for_current_question) 
 
-func _show_question_scene(scene_resource: PackedScene) -> void:
-	if current_sub_scene: # Should not happen if logic is correct, but as a safeguard
-		current_sub_scene.queue_free()
-	
-	if scene_resource:
-		current_sub_scene = scene_resource.instantiate()
-		# Connect signals from the question scene
+func _instantiate_and_show_question_scene(data_dictionary_for_question: Dictionary) -> void:
+	if current_sub_scene:
+		print("Mainmap: Warning. A sub_scene is already active. Removing it")
+		_remove_current_sub_scene()
+		await get_tree().process_frame
+		await get_tree().process_frame
+	if not question_scene_default_resource:
+		printerr("MainMap: 'question_scene_prefab' (QuestionScene.tscn) is not assigned in the Inspector!")
+		_return_to_map_interaction()
+		return
+	if not data_dictionary_for_question or data_dictionary_for_question.is_empty():
+		printerr("MainMap: No valid question data provided to show the question scene!")
+		_return_to_map_interaction()
+		return
+	current_sub_scene = question_scene_default_resource.instantiate()
+	current_sub_scene.Question_data = data_dictionary_for_question
+	if current_sub_scene.has_signal("question_answered_win"):
 		current_sub_scene.question_answered_win.connect(_on_question_answered_win)
+	if current_sub_scene.has_signal("question_answered_lose"):
 		current_sub_scene.question_answered_lose.connect(_on_question_answered_lose)
-		
-		add_child(current_sub_scene) # Or add to sub_scene_container
-		_set_main_map_interactive(false) # Disable main map interactions
-		print("MainMap: Question scene shown.")
-	else:
-		printerr("MainMap: No question scene resource to show!")
-		_set_question_points_interactive(true) # Re-enable points if we failed to show scene
+	add_child(current_sub_scene)
+	_set_main_map_interactive(false)
+	print("MainMap: Question scene instance shown with specific data.")
 
 func _on_question_answered_win() -> void:
 	print("MainMap: Received question_answered_win.")
