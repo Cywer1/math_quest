@@ -52,13 +52,35 @@ func on_player_health_changed(new_health:int)->void:
 
 func on_player_no_health()->void:
 	print("MainMap: Player has no health left! game over")
-	if current_sub_scene:
-		current_sub_scene.queue_free()
-		current_sub_scene = null
+	if current_sub_scene and is_instance_valid(current_sub_scene):
+		_remove_current_sub_scene()
+		await get_tree().process_frame
+		await get_tree().process_frame
+	PlayerData.next_character_animation = "game_lose"
+	current_sub_scene = cutscene_scene_resource.instantiate()
+	if current_sub_scene.has_signal("cutscene_quit_game"):
+		current_sub_scene.cutscene_quit_game.connect(_on_game_lose_animation_finished_then_game_over)
+	else:
+		printerr("MainMap: CutsceneScene is missing 'cutscene_quit_game' signal or similar for game over sequence.")
+		await get_tree().create_timer(1.6).timeout
+		_transition_to_game_over_scene()
+		return
+	
+	add_child(current_sub_scene)
+	_set_main_map_interactive(false)
+	print("Mainmap: Showing cutscene for game over animation")
+
+func _on_game_lose_animation_finished_then_game_over()->void:
+	print("Mainmap: Game lose animation cutscene finished. Proceeding to game over screen")
+	_remove_current_sub_scene()
+	_transition_to_game_over_scene()
+
+func _transition_to_game_over_scene()->void:
+	print("Mainmap: Transitioning to game over scene!")
 	if game_over_scene:
 		get_tree().change_scene_to_packed(game_over_scene)
 	else:
-		printerr("MainMap: GameOverScene not set!")
+		printerr("Mainmap: Game over scene is not set in the inspector!")
 		get_tree().quit()
 
 func _on_question_point_activated(point_node: Node,data_from_clicked_point: Dictionary):

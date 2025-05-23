@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 	if character_instance and character_instance.has_method("play_char_animation") and animation_to_play!="":
 		character_instance.play_char_animation(animation_to_play)
-		var char_anim_player = character_instance.get_node_or_null("AnimationPlayer")
+		var char_anim_player = character_instance.get_node_or_null("AnimatedSprite2D")
 		if char_anim_player:
 			print("Cutscene: waiting for animation '",animation_to_play,"' to finish")
 			await char_anim_player.animation_finished

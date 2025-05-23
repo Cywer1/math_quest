@@ -1,0 +1,125 @@
+[gd_scene load_steps=27 format=3 uid="uid://caarach87upqn"]
+
+[ext_resource type="Script" uid="uid://crwapq8fjgryi" path="res://Scenes/character_2.gd" id="1_cgjkc"]
+[ext_resource type="Texture2D" uid="uid://d02v8cfpjiw0b" path="res://assets/animations/game_lose/game_lose0000.png" id="1_jlxp4"]
+[ext_resource type="Texture2D" uid="uid://nf5jvckwjv3l" path="res://assets/animations/game_lose/game_lose0001.png" id="2_cgjkc"]
+[ext_resource type="Texture2D" uid="uid://du6u1uf6gklcx" path="res://assets/animations/game_lose/game_lose0002.png" id="3_ewg41"]
+[ext_resource type="Texture2D" uid="uid://c2ow8yl2xo6gd" path="res://assets/animations/game_lose/game_lose0003.png" id="4_0lxy1"]
+[ext_resource type="Texture2D" uid="uid://c8fc2b22alw3g" path="res://assets/animations/game_lose/game_lose0004.png" id="5_q55k3"]
+[ext_resource type="Texture2D" uid="uid://bvdl1vpy2eiaq" path="res://assets/animations/game_lose/game_lose0005.png" id="6_bfaoa"]
+[ext_resource type="Texture2D" uid="uid://ccq38qnokpefx" path="res://assets/animations/game_lose/game_lose0006.png" id="7_whjm4"]
+[ext_resource type="Texture2D" uid="uid://bbtybyc5ly5m7" path="res://assets/animations/game_lose/game_lose0007.png" id="8_qer1j"]
+[ext_resource type="Texture2D" uid="uid://djh3xn052rgde" path="res://assets/animations/hearth_lose/hearth_lose0000.png" id="9_wlkic"]
+[ext_resource type="Texture2D" uid="uid://6ytxcep4xjcg" path="res://assets/animations/hearth_lose/hearth_lose0001.png" id="10_hvneg"]
+[ext_resource type="Texture2D" uid="uid://eluad4n56t1f" path="res://assets/animations/hearth_lose/hearth_lose0002.png" id="11_r6xcg"]
+[ext_resource type="Texture2D" uid="uid://4jgmbbyvb81i" path="res://assets/animations/hearth_lose/hearth_lose0003.png" id="12_uaski"]
+[ext_resource type="Texture2D" uid="uid://yhx82jpaxeo1" path="res://assets/animations/hearth_lose/hearth_lose0004.png" id="13_a1v0c"]
+[ext_resource type="Texture2D" uid="uid://3vpm5s13yk5v" path="res://assets/animations/hearth_lose/hearth_lose0005.png" id="14_nc3nf"]
+[ext_resource type="Texture2D" uid="uid://kbran4cs4a4k" path="res://assets/animations/hearth_lose/hearth_lose0006.png" id="15_4fw3c"]
+[ext_resource type="Texture2D" uid="uid://c4n3fgpv2eywy" path="res://assets/animations/hearth_lose/hearth_lose0007.png" id="16_0yder"]
+[ext_resource type="Texture2D" uid="uid://dv2tpm2u4fjdn" path="res://assets/animations/victory/victory0000.png" id="17_jtif5"]
+[ext_resource type="Texture2D" uid="uid://dotiuubjep7fm" path="res://assets/animations/victory/victory0001.png" id="18_0bs8s"]
+[ext_resource type="Texture2D" uid="uid://cyss5leigiwf8" path="res://assets/animations/victory/victory0002.png" id="19_quyld"]
+[ext_resource type="Texture2D" uid="uid://chyr024psdxpk" path="res://assets/animations/victory/victory0003.png" id="20_xpakp"]
+[ext_resource type="Texture2D" uid="uid://b1rx03oqouv41" path="res://assets/animations/victory/victory0004.png" id="21_ce67o"]
+[ext_resource type="Texture2D" uid="uid://disotxl75x45d" path="res://assets/animations/victory/victory0005.png" id="22_j8hma"]
+[ext_resource type="Texture2D" uid="uid://o47be2xxvii5" path="res://assets/animations/victory/victory0006.png" id="23_at3rn"]
+[ext_resource type="Texture2D" uid="uid://6iph7hhmeht8" path="res://assets/animations/victory/victory0007.png" id="24_ytefi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ofl1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jlxp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cgjkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ewg41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0lxy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q55k3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bfaoa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_whjm4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qer1j")
+}],
+"loop": false,
+"name": &"game_lose",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_wlkic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hvneg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r6xcg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_uaski")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a1v0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_nc3nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_4fw3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_0yder")
+}],
+"loop": false,
+"name": &"heart_lose",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_jtif5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0bs8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_quyld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xpakp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ce67o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_j8hma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_at3rn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ytefi")
+}],
+"loop": false,
+"name": &"victory",
+"speed": 5.0
+}]
+
+[node name="Character2" type="Node2D"]
+script = ExtResource("1_cgjkc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(640, 358)
+sprite_frames = SubResource("SpriteFrames_5ofl1")
+animation = &"game_lose"

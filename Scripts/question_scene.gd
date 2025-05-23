@@ -71,7 +71,7 @@ func handle_lose(): # Make async to use await
 	if PlayerData.get_current_health() <= 0:
 		PlayerData.next_character_animation = "game_lose"
 	else:
-		PlayerData.next_character_animation = "hearth_lose"
+		PlayerData.next_character_animation = "heart_lose"
 	
 	await after_answer_timer.timeout # Timer still useful for local feedback
 	emit_signal("question_answered_lose")
