@@ -2,6 +2,8 @@ extends Control
 
 signal question_answered_win
 signal question_answered_lose
+const CORRECT_ANSWER = preload("res://correct_answer.tres")
+const FALSE_ANSWER = preload("res://false_answer.tres")
 
 var Question_data = {"question":"What is 2 + 2 ?","answers":["1","3","4","5"],"correctAnswer":"4"}
 @onready var answer_button_2: Button = $Answer_Button2
@@ -29,29 +31,41 @@ func disable_buttons():
 
 func _on_answer_button_pressed() -> void:
 	if answer_button.text == Question_data["correctAnswer"]:
+		answer_button.theme = CORRECT_ANSWER
 		handle_win()
 	else : 
+		answer_button.theme = FALSE_ANSWER
+		highlight_the_correct_answer()
 		handle_lose()
 
 
 func _on_answer_button_2_pressed() -> void:
 	if answer_button_2.text == Question_data["correctAnswer"]:
+		answer_button_2.theme = CORRECT_ANSWER
 		handle_win()
 	else : 
+		answer_button_2.theme = FALSE_ANSWER
+		highlight_the_correct_answer()
 		handle_lose()
 
 
 func _on_answer_button_3_pressed() -> void:
 	if answer_button_3.text == Question_data["correctAnswer"]:
+		answer_button_3.theme = CORRECT_ANSWER
 		handle_win()
 	else : 
+		answer_button_3.theme = FALSE_ANSWER
+		highlight_the_correct_answer()
 		handle_lose()
 
 
 func _on_answer_button_4_pressed() -> void:
 	if answer_button_4.text == Question_data["correctAnswer"]:
+		answer_button_4.theme = CORRECT_ANSWER
 		handle_win()
 	else : 
+		answer_button_4.theme = FALSE_ANSWER
+		highlight_the_correct_answer()
 		handle_lose()
 
 func handle_win(): # Make async to use await
@@ -79,3 +93,8 @@ func handle_lose(): # Make async to use await
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
 			print("Question_scene: I am being freed now!")
+
+func highlight_the_correct_answer()->void:
+	for buttony in [answer_button,answer_button_2,answer_button_3,answer_button_4]:
+		if buttony.text == Question_data["correctAnswer"]:
+			buttony.theme = CORRECT_ANSWER
