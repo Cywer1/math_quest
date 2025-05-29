@@ -1,4 +1,59 @@
-[gd_scene format=3 uid="uid://buspk3fdwhnus"]
+[gd_scene load_steps=15 format=3 uid="uid://buspk3fdwhnus"]
+
+[ext_resource type="Script" uid="uid://bhuuamii32pj3" path="res://Scenes/final_win_scene.gd" id="1_e00ui"]
+[ext_resource type="Texture2D" uid="uid://l3exflmx4d1b" path="res://assets/animations/Final_Victory/game_lose0000.png" id="2_6fhr5"]
+[ext_resource type="FontFile" uid="uid://5q3c1bk6xx4" path="res://Kranky-Regular.ttf" id="2_y3g5j"]
+[ext_resource type="Texture2D" uid="uid://dif20ttxx6o25" path="res://assets/animations/Final_Victory/game_lose0001.png" id="3_y3g5j"]
+[ext_resource type="Texture2D" uid="uid://b1i8e76hlsuqe" path="res://assets/animations/Final_Victory/game_lose0002.png" id="4_lia20"]
+[ext_resource type="Texture2D" uid="uid://dvdkx0sjh5yp4" path="res://assets/animations/Final_Victory/game_lose0003.png" id="5_6h1wf"]
+[ext_resource type="Texture2D" uid="uid://8m20ex6c7vgb" path="res://assets/animations/Final_Victory/game_lose0004.png" id="6_8b1fg"]
+[ext_resource type="Texture2D" uid="uid://0me00wtayivw" path="res://assets/animations/Final_Victory/game_lose0005.png" id="7_brn8l"]
+[ext_resource type="Texture2D" uid="uid://cr4jm8bbjjya4" path="res://assets/animations/Final_Victory/game_lose0006.png" id="8_ixo3y"]
+[ext_resource type="Texture2D" uid="uid://xf40au4hrpek" path="res://assets/animations/Final_Victory/game_lose0007.png" id="9_gmiho"]
+[ext_resource type="Texture2D" uid="uid://cxtal5trdl8on" path="res://assets/animations/Final_Victory/game_lose0008.png" id="10_ildgb"]
+[ext_resource type="Texture2D" uid="uid://xvo1ewfi40jb" path="res://assets/animations/Final_Victory/game_lose0009.png" id="11_tjjxu"]
+[ext_resource type="Texture2D" uid="uid://cll0rjj1k6ry2" path="res://assets/animations/Final_Victory/game_lose0010.png" id="12_g74sa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6lx08"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6fhr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y3g5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lia20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6h1wf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8b1fg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_brn8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ixo3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gmiho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ildgb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tjjxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_g74sa")
+}],
+"loop": false,
+"name": &"final_victory",
+"speed": 10.0
+}]
 
 [node name="FinalWinScene" type="Control"]
 layout_mode = 3
@@ -7,12 +62,49 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_e00ui")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 458.0
-offset_top = 28.0
-offset_right = 790.0
-offset_bottom = 120.0
-theme_override_font_sizes/font_size = 64
-text = "You WON!!"
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.588235, 1, 1, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -93.0
+offset_top = 344.0
+offset_right = 154.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.75554, 1, 0.642645, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(645, 362)
+sprite_frames = SubResource("SpriteFrames_6lx08")
+animation = &"final_victory"
+
+[node name="WonLabel" type="Label" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -196.5
+offset_right = 196.5
+offset_bottom = 148.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.0275066, 0.297545, 0, 1)
+theme_override_fonts/font = ExtResource("2_y3g5j")
+theme_override_font_sizes/font_size = 50
+text = "Congratulations!
+    You WON"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
