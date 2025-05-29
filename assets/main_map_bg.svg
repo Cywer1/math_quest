@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Krita: https://krita.org -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:krita="http://krita.org/namespaces/svg/krita"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    width="307.2pt"
+    height="172.8pt"
+    viewBox="0 0 307.2 172.8">
+<defs/>
+<rect id="shape0" fill="#b9ffb7" fill-rule="evenodd" stroke="#1fb638" stroke-width="3.600003072" stroke-linecap="square" stroke-linejoin="bevel" width="307.2" height="172.8"/><path id="shape1" transform="translate(43.3129044289938, 92.2141039243455)" fill="none" stroke="#092608" stroke-width="3.600003072" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" d="M0 0.72911L31.4629 0" sodipodi:nodetypes="cc"/><path id="shape2" transform="translate(115.561704849302, 107.217464202178)" fill="none" stroke="#092608" stroke-width="3.600003072" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" d="M0 0L11.384 12.4809" sodipodi:nodetypes="cc"/><path id="shape3" transform="translate(166.234086155901, 110.251648140043)" fill="none" stroke="#092608" stroke-width="3.600003072" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" d="M0 12.0914L20.9001 0" sodipodi:nodetypes="cc"/><path id="shape4" transform="translate(115.730773805044, 65.0241929348775)" fill="none" stroke="#092608" stroke-width="3.600003072" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" d="M0 8.5093L18.0743 0" sodipodi:nodetypes="cc"/><path id="shape5" transform="translate(172.948538969645, 61.5280884572178)" fill="none" stroke="#092608" stroke-width="3.600003072" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" d="M0 0L13.5255 9.20218" sodipodi:nodetypes="cc"/><path id="shape6" transform="translate(224.804402966436, 89.3565366634604)" fill="none" stroke="#092608" stroke-width="3.600003072" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" d="M0 0.117744L28.7256 0" sodipodi:nodetypes="cc"/><text id="shape7" krita:useRichText="true" text-rendering="auto" krita:textVersion="3" transform="translate(7.63670259160808, 20.8754270797898)" fill="#000000" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel" letter-spacing="0" word-spacing="0" style="text-align: start;text-align-last: auto;font-family: Algerian;font-size: 16;"><tspan x="0">Click on points</tspan><tspan x="0" dy="18">to start your journey!</tspan></text>
+</svg>

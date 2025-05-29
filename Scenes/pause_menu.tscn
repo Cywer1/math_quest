@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdxx08w2lcqa6"]
+
+[ext_resource type="Script" uid="uid://bwrrptsvfh514" path="res://Scripts/pause_menu.gd" id="1_bpi0q"]
+[ext_resource type="Texture2D" uid="uid://cxyfju4onvcuc" path="res://assets/menu_bg_1.png" id="2_vmyb1"]
+[ext_resource type="FontFile" uid="uid://5q3c1bk6xx4" path="res://Kranky-Regular.ttf" id="3_myy0f"]
+[ext_resource type="Texture2D" uid="uid://cpgrgv8gjlt02" path="res://assets/menu_button_den2.png" id="4_sjs17"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u8tnp"]
+texture = ExtResource("4_sjs17")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_stj27"]
+texture = ExtResource("4_sjs17")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ix48p"]
+texture = ExtResource("4_sjs17")
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bpi0q")
+
+[node name="MenuBg1" type="Sprite2D" parent="."]
+position = Vector2(630, 358)
+texture = ExtResource("2_vmyb1")
+
+[node name="ResumeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 256.0
+offset_right = 736.0
+offset_bottom = 345.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_myy0f")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxTexture_u8tnp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_stj27")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ix48p")
+text = "Resume"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 518.0
+offset_top = 377.0
+offset_right = 737.0
+offset_bottom = 466.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_myy0f")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxTexture_u8tnp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_stj27")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ix48p")
+text = "Exit"
+
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

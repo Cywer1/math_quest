@@ -10,6 +10,7 @@ extends Node
 @onready var player_icon: Sprite2D = $MapContent/PlayerIcon
 @onready var marker_2d: Marker2D = $MapContent/Marker2D
 @onready var map_content_root: Node2D = $MapContent
+const PAUSE_MENU = preload("res://Scenes/pause_menu.tscn")
 
 var all_question_points_initial_nodes: Array[Node] = []
 var active_question_points: Array[Node] = []
@@ -262,3 +263,10 @@ func _cleanup_after_failed_interaction(point_node: Node):
 	if point_node is Button:
 		point_node.disabled = false
 	_set_question_points_interactive(true)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		var pmenu = PAUSE_MENU.instantiate()
+		add_child(pmenu)
+		get_tree().paused = true
+		

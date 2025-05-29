@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://4pojeon32r4"]
+[gd_scene load_steps=3 format=3 uid="uid://4pojeon32r4"]
+
+[ext_resource type="Script" uid="uid://btye4b1sq6wlp" path="res://Scenes/game_over.gd" id="1_8fo1c"]
+[ext_resource type="FontFile" uid="uid://5q3c1bk6xx4" path="res://Kranky-Regular.ttf" id="1_ojehl"]
 
 [node name="Game_over" type="Control"]
 layout_mode = 3
@@ -7,12 +10,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8fo1c")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.596655, 0.775626, 0.872612, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 418.0
-offset_top = 324.0
-offset_right = 803.0
-offset_bottom = 412.0
+offset_left = 435.0
+offset_top = 20.0
+offset_right = 820.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0, 0.318594, 0.229008, 1)
+theme_override_fonts/font = ExtResource("1_ojehl")
 theme_override_font_sizes/font_size = 64
-text = "GAME OVER!"
+text = "GAME OVER"

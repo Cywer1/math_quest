@@ -4,6 +4,8 @@ signal question_answered_win
 signal question_answered_lose
 const CORRECT_ANSWER = preload("res://correct_answer.tres")
 const FALSE_ANSWER = preload("res://false_answer.tres")
+const NORMAL_THEME = preload("res://normal_theme.tres")
+const PAUSE_MENU = preload("res://Scenes/pause_menu.tscn")
 
 var Question_data = {"question":"What is 2 + 2 ?","answers":["1","3","4","5"],"correctAnswer":"4"}
 @onready var answer_button_2: Button = $Answer_Button2
@@ -19,6 +21,9 @@ func _ready() -> void:
 	answer_button_2.text = Question_data["answers"][1]
 	answer_button_3.text = Question_data["answers"][2]
 	answer_button_4.text = Question_data["answers"][3]
+	for button in [answer_button,answer_button_2,answer_button_3,answer_button_4] : 
+		button.theme = NORMAL_THEME
+		button.add_theme_color_override("font_color",Color.BLACK)
 
 
 
@@ -98,3 +103,10 @@ func highlight_the_correct_answer()->void:
 	for buttony in [answer_button,answer_button_2,answer_button_3,answer_button_4]:
 		if buttony.text == Question_data["correctAnswer"]:
 			buttony.theme = CORRECT_ANSWER
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		var pmenu = PAUSE_MENU.instantiate()
+		add_child(pmenu)
+		get_tree().paused = true

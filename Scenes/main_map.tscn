@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://c46q0xlouqv3j"]
+[gd_scene load_steps=10 format=3 uid="uid://c46q0xlouqv3j"]
 
 [ext_resource type="Texture2D" uid="uid://db716w1fcnctu" path="res://assets/heart_icon.png" id="1_1vevx"]
 [ext_resource type="Script" uid="uid://c5wnfaw352mru" path="res://Scripts/main_map.gd" id="1_tvgjd"]
 [ext_resource type="PackedScene" uid="uid://4pojeon32r4" path="res://Scenes/game_over.tscn" id="2_f4xrl"]
-[ext_resource type="Texture2D" uid="uid://hj6fbg4qkkdb" path="res://assets/player_icon.png" id="2_tvgjd"]
 [ext_resource type="PackedScene" uid="uid://gew5xrva6i2d" path="res://Scenes/question_point.tscn" id="3_1vevx"]
 [ext_resource type="PackedScene" uid="uid://doltx4d2c6t0h" path="res://Scenes/cutscene.tscn" id="4_o0jjj"]
 [ext_resource type="PackedScene" uid="uid://cm15e7xhv6axi" path="res://Scenes/question_scene.tscn" id="5_nfd1w"]
 [ext_resource type="PackedScene" uid="uid://buspk3fdwhnus" path="res://Scenes/final_win_scene.tscn" id="5_uxcei"]
+[ext_resource type="Texture2D" uid="uid://b3endued6pm11" path="res://assets/main_map_bg.svg" id="6_a15nj"]
+[ext_resource type="Texture2D" uid="uid://oq5umq0ca0lk" path="res://assets/knight_icon.png" id="6_uxcei"]
 
 [node name="MainMap" type="Node"]
 script = ExtResource("1_tvgjd")
@@ -16,18 +17,23 @@ question_scene_default_resource = ExtResource("5_nfd1w")
 cutscene_scene_resource = ExtResource("4_o0jjj")
 final_win_scene = ExtResource("5_uxcei")
 
+[node name="MainMapBg" type="Sprite2D" parent="."]
+position = Vector2(633, 372)
+scale = Vector2(3.2163, 3.2163)
+texture = ExtResource("6_a15nj")
+
 [node name="MapContent" type="Node2D" parent="."]
 
 [node name="PlayerIcon" type="Sprite2D" parent="MapContent"]
 position = Vector2(151, 373)
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_tvgjd")
+texture = ExtResource("6_uxcei")
 
 [node name="question_point" parent="MapContent" instance=ExtResource("3_1vevx")]
-offset_left = 390.0
-offset_top = 437.0
-offset_right = 481.0
-offset_bottom = 528.0
+offset_left = 335.0
+offset_top = 348.0
+offset_right = 426.0
+offset_bottom = 439.0
 grow_horizontal = 1
 grow_vertical = 1
 question_scene_resource = ExtResource("5_nfd1w")
@@ -38,10 +44,10 @@ specific_question_data = {
 }
 
 [node name="question_point2" parent="MapContent" instance=ExtResource("3_1vevx")]
-offset_left = 551.0
-offset_top = 271.0
-offset_right = 642.0
-offset_bottom = 362.0
+offset_left = 590.0
+offset_top = 219.0
+offset_right = 681.0
+offset_bottom = 310.0
 grow_horizontal = 1
 grow_vertical = 1
 question_scene_resource = ExtResource("5_nfd1w")
@@ -52,10 +58,10 @@ specific_question_data = {
 }
 
 [node name="question_point3" parent="MapContent" instance=ExtResource("3_1vevx")]
-offset_left = 718.0
-offset_top = 445.0
-offset_right = 809.0
-offset_bottom = 536.0
+offset_left = 567.0
+offset_top = 468.0
+offset_right = 658.0
+offset_bottom = 559.0
 grow_horizontal = 1
 grow_vertical = 1
 question_scene_resource = ExtResource("5_nfd1w")
@@ -66,10 +72,10 @@ specific_question_data = {
 }
 
 [node name="question_point4" parent="MapContent" instance=ExtResource("3_1vevx")]
-offset_left = 914.0
-offset_top = 295.0
-offset_right = 1005.0
-offset_bottom = 386.0
+offset_left = 811.0
+offset_top = 348.0
+offset_right = 902.0
+offset_bottom = 439.0
 grow_horizontal = 1
 grow_vertical = 1
 question_scene_resource = ExtResource("5_nfd1w")
@@ -77,6 +83,20 @@ specific_question_data = {
 "answers": ["10", "11", "8", "5"],
 "correctAnswer": "10",
 "question": "What is 12 - 2 ?"
+}
+
+[node name="question_point5" parent="MapContent" instance=ExtResource("3_1vevx")]
+offset_left = 1097.0
+offset_top = 339.0
+offset_right = 1188.0
+offset_bottom = 430.0
+grow_horizontal = 1
+grow_vertical = 1
+question_scene_resource = ExtResource("5_nfd1w")
+specific_question_data = {
+"answers": ["57", "66", "52", "63"],
+"correctAnswer": "57",
+"question": "73-16 = ?"
 }
 
 [node name="HealthContainer" type="HBoxContainer" parent="MapContent"]
@@ -98,4 +118,4 @@ position = Vector2(223, 45)
 texture = ExtResource("1_1vevx")
 
 [node name="Marker2D" type="Marker2D" parent="MapContent"]
-position = Vector2(154, 376)
+position = Vector2(77, 400)

@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm15e7xhv6axi"]
+[gd_scene load_steps=5 format=3 uid="uid://cm15e7xhv6axi"]
 
 [ext_resource type="Script" uid="uid://7bol0slmlby2" path="res://Scripts/question_scene.gd" id="1_e6obf"]
+[ext_resource type="Texture2D" uid="uid://blq2xwd056aoh" path="res://assets/question_scene_bg.svg" id="2_xo858"]
+[ext_resource type="StyleBox" uid="uid://dqn10d8q6lfbt" path="res://Scenes/question_button_normal.tres" id="3_tiyca"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p8mks"]
 font_size = 89
@@ -16,6 +18,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e6obf")
 
+[node name="QuestionSceneBg" type="Sprite2D" parent="."]
+position = Vector2(635, 357)
+scale = Vector2(3.15109, 3.15109)
+texture = ExtResource("2_xo858")
+
 [node name="Question_Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 451.0
@@ -27,11 +34,12 @@ label_settings = SubResource("LabelSettings_p8mks")
 
 [node name="Answer_Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 257.0
-offset_top = 357.0
-offset_right = 479.0
-offset_bottom = 440.0
+offset_left = 249.0
+offset_top = 356.0
+offset_right = 471.0
+offset_bottom = 439.0
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("3_tiyca")
 text = "Answer 1"
 
 [node name="Answer_Button2" type="Button" parent="."]
